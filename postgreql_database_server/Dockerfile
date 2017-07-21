@@ -8,5 +8,4 @@ WORKDIR roles
 RUN ansible-galaxy install - requirements.yml
 WORKDIR playbooks
 RUN ansible-playbook playbook.yml -c local
-EXPOSE 
-
+EXPOSE 5432
