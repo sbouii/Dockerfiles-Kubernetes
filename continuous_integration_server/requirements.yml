@@ -1,3 +1,2 @@
-role java for debian distribution
-
-role jenkins for debian distribution 
+ ansible-java
+#role for jenkins 

@@ -8,5 +8,4 @@ RUN mkdir /playbooks
 WORKDIR playbooks
 ADD playbook.yml /playbooks
 RUN ansible-playbook playbook.yml -c local
-EXPOSE 8081
-
+EXPOSE 3000
