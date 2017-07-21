@@ -1,2 +1,2 @@
- ansible-java
-#role for jenkins 
+ abessifi.ansible-java
+ sbouii.jenkins_ansible
