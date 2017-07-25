@@ -1,5 +1,8 @@
 FROM ansible/ubuntu14.04-ansible:stable
 LABEL maintainer "Mariem sbouii mariemsbouiii40@gmail.com"
+#retrieve a prebuilt role from ansible-galaxy
+#This could be an easy way to evaluate a role or to quickly
+# get a service up and running in your infrastructure.
 RUN mkdir /roles
 RUN mkdir /playbooks
 WORKDIR roles
@@ -9,4 +12,8 @@ WORKDIR playbooks
 ADD playbook.yml /playbooks
 RUN ansible-playbook playbook.yml -c local
 EXPOSE 8081
+# And then start up our service
+ENTRYPOINT ["/usr/bin/jenkins", "-p", "8081"]
+
+
 
