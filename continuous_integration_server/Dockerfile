@@ -15,4 +15,4 @@ RUN ansible-playbook playbook.yml -c local
 CMD ["bash"]
 EXPOSE 8081
 # And then start up our service
-ENTRYPOINT ["/usr/bin/jenkins", "-p", "8081"]
+ENTRYPOINT ["", "-p", "8081"]
