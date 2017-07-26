@@ -11,7 +11,8 @@ RUN ansible-galaxy install -r requirements.yml
 WORKDIR playbooks
 ADD playbook.yml /playbooks
 RUN ansible-playbook playbook.yml -c local
+# Define default command.
+CMD ["bash"]
 EXPOSE 8081
-
 # And then start up our service
 ENTRYPOINT ["/usr/bin/jenkins", "-p", "8081"]
