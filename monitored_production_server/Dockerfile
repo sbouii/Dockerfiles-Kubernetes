@@ -11,6 +11,8 @@ RUN ansible-galaxy install -r requirements.yml
 WORKDIR playbooks
 ADD playbook.yml /playbooks
 RUN ansible-playbook playbook.yml -c local
+RUN apt-get install -yq supervisor
+ADD supervisord.conf /etc/supervisor/conf.d/monitored_production_server.conf
 # And then start up our service
 EXPOSE 3000 9090
-ENTRYPOINT ["", "-p", [3000,9090]]
+ENTRYPOINT ["/usr/bin/supervisord", "-p", [3000,9090]]
