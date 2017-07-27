@@ -15,4 +15,4 @@ RUN rm -rf /var/lib/apt/lists/*
 VOLUME ["/root/.jenkins"]
 RUN rm /usr/sbin/policy-rc.d
 EXPOSE 8080
-ENTRYPOINT ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war", "--webroot=/root/.jenkins/web"]
+CMD ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war", "--webroot=/root/.jenkins/web"]
