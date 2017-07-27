@@ -12,9 +12,7 @@ WORKDIR playbooks
 ADD playbook.yml /playbooks
 RUN ansible-playbook playbook.yml -c local
 RUN apt-get install -yq supervisor
+RUN rm -rf /var/lib/apt/lists/*
 ADD supervisord.conf /etc/supervisor/conf.d/monitored_production_server.conf
-# Define default command.
-CMD ["bash"]
-# And then start up our service
-EXPOSE 3000 9090
+EXPOSE 3000 9090 9093
 ENTRYPOINT ["/usr/bin/supervisord"]
