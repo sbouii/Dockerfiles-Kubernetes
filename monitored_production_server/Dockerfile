@@ -17,4 +17,4 @@ ADD supervisord.conf /etc/supervisor/conf.d/monitored_production_server.conf
 CMD ["bash"]
 # And then start up our service
 EXPOSE 3000 9090
-ENTRYPOINT ["/usr/bin/supervisord", "-p", [3000,9090]]
+ENTRYPOINT ["/usr/bin/supervisord"]
