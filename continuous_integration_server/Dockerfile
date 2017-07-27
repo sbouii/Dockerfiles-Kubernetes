@@ -11,8 +11,8 @@ RUN ansible-galaxy install -r requirements.yml
 WORKDIR playbooks
 ADD playbook.yml /playbooks
 RUN ansible-playbook playbook.yml -c local
-# Define default command.
-CMD ["bash"]
-EXPOSE 8081
-# And then start up our service
-ENTRYPOINT ["", "-p", "8081"]
+RUN rm -rf /var/lib/apt/lists/*
+VOLUME ["/root/.jenkins"]
+RUN rm /usr/sbin/policy-rc.d
+EXPOSE 8080
+ENTRYPOINT ["/usr/bin/java", "-jar", "/usr/share/jenkins/jenkins.war", "--webroot=/root/.jenkins/web"]
