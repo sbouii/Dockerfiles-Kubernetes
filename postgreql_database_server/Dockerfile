@@ -13,4 +13,4 @@ WORKDIR playbooks
 RUN ansible-playbook playbook.yml -c local
 # And then start up our service
 EXPOSE 5432 
-ENTRYPOINT ["", "-p", "5432"]
+ENTRYPOINT []
