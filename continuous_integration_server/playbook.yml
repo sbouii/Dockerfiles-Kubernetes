@@ -6,5 +6,4 @@
     state: installed
     update_cache: yes  
   roles:
-    - ansible-java
     - jenkins_ansible 
