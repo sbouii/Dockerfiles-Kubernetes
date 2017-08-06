@@ -1,9 +1,10 @@
 - hosts: localhost
-  sudo: yes
- - name: Install git 
+   roles:
+    - { role: geerlingguy.java }
+    - { role: geerlingguy.jenkins, jenkins_hostname: localhost }
+   name: Install git 
    apt:
     name: git
     state: installed
-    update_cache: yes  
-  roles:
-    - jenkins_ansible 
+    update_cache: yes
+    sudo: yes

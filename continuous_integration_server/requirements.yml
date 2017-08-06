@@ -1,1 +1,2 @@
- sbouii.jenkins_ansible # must install also the jenkins-cli file of jenkins command line + use abessifi.java as the requirements for installing jenkins 
+ geerlingguy.java
+ geerlingguy.jenkins
