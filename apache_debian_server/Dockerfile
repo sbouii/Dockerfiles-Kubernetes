@@ -1,4 +1,4 @@
- FROM ansible/ubuntu14.04-ansible:stable 
+ FROM geerlingguy/docker-ubuntu1404-ansible:latest 
  LABEL maintainer "Mariem sbouii mariemsbouiii40@gmail.com"
  #retrieve a prebuilt role from ansible-galaxy
  #This could be an easy way to evaluate a role or to quickly
