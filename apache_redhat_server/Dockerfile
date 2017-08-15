@@ -1,4 +1,4 @@
- FROM ansible/centos7-ansible:stable
+ FROM docker pull geerlingguy/docker-centos7-ansible
  LABEL maintainer "Mariem sbouii mariemsbouiii40@gmail.com"
  #retrieve a prebuilt role from ansible-galaxy
  #This could be an easy way to evaluate a role or to quickly
