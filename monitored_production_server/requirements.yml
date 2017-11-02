@@ -1,2 +1,0 @@
-sbouii.grafana_ansible
-sbouii.prometheus_ansible #in the ansible role you have to run a docker container which containers the cli-prometheus

@@ -1,5 +1,0 @@
-- hosts: localhost
-  sudo: yes
-  roles:
-   - sbouii.grafana_ansible
-   - sbouii.prometheus_ansible
