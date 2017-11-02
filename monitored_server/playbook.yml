@@ -72,5 +72,4 @@
   - name: start grafana service
     service:
      name: grafana-server
-     state: started      
-~                                               
+     state: started                                                 
