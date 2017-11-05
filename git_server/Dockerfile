@@ -1,5 +1,5 @@
 FROM debian:jessie 
-LABEL maintainer "Mariem sbouii mariemsbouiii40@gmail.com"
+MAINTAINER "Mariem sbouii mariemsbouiii40@gmail.com"
 RUN apt-get update \
     && apt-get install -y \
     openssh-server \

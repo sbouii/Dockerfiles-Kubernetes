@@ -2,7 +2,7 @@ FROM geerlingguy/docker-ubuntu1404-ansible:latest
 LABEL maintainer "Mariem sbouii mariemsbouiii40@gmail.com"
 RUN mkdir /files
 
-ADD files /files
+ADD ./files /files
  
 ADD playbook.yml 
 
