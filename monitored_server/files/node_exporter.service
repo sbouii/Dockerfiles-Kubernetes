@@ -3,7 +3,7 @@ Description=Node Exporter
 
 [Service]
 User=prometheus
-ExecStart=/Prometheus/node_exporter
+ExecStart=/Node_exporter/node_exporter
 
 [Install]
 WantedBy=default.target
