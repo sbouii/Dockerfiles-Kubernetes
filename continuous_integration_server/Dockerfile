@@ -11,7 +11,7 @@ WORKDIR /ansible-roles
 ADD playbook.yml /ansible-roles
 
 RUN sudo ansible-galaxy install \
-              abessifi.java \
+              geerlingguy.java \
               geerlingguy.jenkins \
     && ansible-playbook playbook.yml -c local
     && rm -rf /var/lib/apt/lists/*

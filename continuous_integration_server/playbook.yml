@@ -1,6 +1,6 @@
 - hosts: localhost
   roles:
-    - { role: abessifi.java }
+    - { role: geerlingguy.java}
     - { role: geerlingguy.jenkins, jenkins_hostname: localhost }
   tasks:
   - name: Install git 
