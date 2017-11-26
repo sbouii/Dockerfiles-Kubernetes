@@ -1,7 +1,8 @@
-FROM solita/ubuntu-systemd
+FROM centos:latest
 LABEL maintainer "Mariem sbouii mariemsbouiii40@gmail.com"
-RUN  apt-get update && \
-     apt-get install -y \
+RUN  yum -y update && \
+     yum clean all && \
+     yum -y install \
      python-yaml \
      python-jinja2 \
      python-httplib2 \
@@ -10,7 +11,8 @@ RUN  apt-get update && \
      python-setuptools \
      python-pkg-resources \
      git \
-     python-pip
+     python-pip && \
+     yum clean all
 RUN mkdir /etc/ansible/ && \
     echo '[local]\nlocalhost\n' > /etc/ansible/hosts
 RUN mkdir /opt/ansible/ && \
@@ -29,7 +31,7 @@ ADD ./files /files
 ADD ./playbook.yml /playbook.yml
 
 RUN ansible-playbook /playbook.yml -c local
-    && apt-get install -yq supervisor
+    && yum install supervisor
     && rm -rf /var/lib/apt/lists/*
 
 ADD supervisord.conf /etc/supervisor/conf.d/monitored_production_server.conf

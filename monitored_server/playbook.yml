@@ -15,66 +15,74 @@
      src: https://github.com/prometheus/node_exporter/releases/download/0.11.0/node_exporter-0.11.0.linux-amd64.tar.gz
      dest: /Node
      copy: no
-    
+
+  - name: create user prometheus
+    shell: sudo useradd --no-create-home --shell /bin/false prometheus
+
+  - name: create user node_exporter
+    shell: sudo useradd --no-create-home --shell /bin/false node_exporter
+
   - name: run node exporter as an init service
     copy:
      src: ./files/node_exporter.service
      dest: /etc/systemd/system/node_exporter.service
-
-  - name: reload systemd
-    shell: systemctl daemon-reload --privileged
-
-  - name: enable node exporter service
-    shell: systemctl enable node_exporter.service --privileged
-
-
-  - name: start node exporter service
-    shell: systemctl start node_exporter.service --privileged
-  
+    
+  - name: enable node exporter service on boot
+    systemd:
+     state: restarted
+     enabled: yes
+     daemon_reload: yes
+     name: node_exporter 
+         
   - name: update prometheus configuration
     copy:
       src: ./files/prometheus.yml
       dest: /etc/prometheus/prometheus.yml
 
-  - name: run prometheus
-    shell: ./prometheus -storage.local.memory-chunks=10000
-    args:
-     chdir: /Prometheus
+  - name: run prometheus service as an init service
+    copy:
+     src: ./files/prometheus.service
+     det:  /etc/systemd/system/prometheus.service
+
+  - name: enable prometheus service on boot
+    systemd:
+     state: restarted
+     enabled: yes
+     daemon_reload: yes
+     name: prometheus
 
   - name: install grafana dependencies
-    apt:
+    yum:
      name: "{{ item }}"
      state: installed
     with_items:
      - apt-transport-https
      - ufw
 
-  - name: add GPG key
-    apt_key:
-      url:  https://packagecloud.io/gpg.key
-      state: present
-
-  - name: add repository
-    apt_repository:
-      repo: deb https://packagecloud.io/grafana/stable/debian/ jessie main
-      state: present
-      filename: grafana
+  - name: add grafana repository
+    yum_repository:
+     name: grafana
+     description: YUM repository
+     baseurl:  https://packagecloud.io/grafana/stable/el/6/$basearch 
+     enabled: yes
+     gpgcheck: yes
+     repo_gpgcheck: yes
+     gpgkey: https://packagecloud.io/gpg.key https://grafanarel.s3.amazonaws.com/RPM-GPG-KEY-grafana
 
   - name: install grafana
-    apt:
+    yum:
      name: grafana
      state: installed
-
-  - name: run grafana as an init service
-    shell: update-rc.d grafana-server defaults 95 10
-
+     update_cache: yes
+    
   - name: allow grafana port in UFW
     ufw:
      rule: allow
      port: 3000
      proto: tcp
 
-  - name: start grafana service
+  - name: enable and start grafana service on boot
     service:
      name: grafana-server
-     state: started                                                 
+     state: started 
+     enabled: yes                                                
