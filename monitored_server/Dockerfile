@@ -1,5 +1,5 @@
 FROM ansible/centos7-ansible:stable
-LABEL maintainer "Mariem sbouii mariemsbouiii40@gmail.com"
+LABEL maintainer "Mariem sbouii mariem.sbouiii40@gmail.com"
    
 RUN mkdir /files
 
