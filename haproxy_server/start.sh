@@ -5,4 +5,3 @@ systemctl enable keepalived
 systemctl enable haproxy 
 sytemctl restart keepalived 
 systemctl restart haproxy 
-
