@@ -2,10 +2,3 @@
   roles:
     - { role: geerlingguy.java}
     - { role: geerlingguy.jenkins, jenkins_hostname: localhost }
-  tasks:
-  - name: Install git 
-    sudo: yes
-    apt:
-     name: git
-     state: installed
-     update_cache: yes
