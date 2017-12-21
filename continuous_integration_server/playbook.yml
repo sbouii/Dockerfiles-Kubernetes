@@ -1,4 +1,5 @@
 - hosts: localhost
+<<<<<<< HEAD
   tasks:
   - name: 
     sudo: yes
@@ -6,3 +7,8 @@
      name: git
      state: installed
      update_cache: yes
+=======
+  roles:
+    - { role: geerlingguy.java}
+    - { role: geerlingguy.jenkins, jenkins_hostname: localhost }
+>>>>>>> 15d1add41514b444413936123bad44767cedf35d
