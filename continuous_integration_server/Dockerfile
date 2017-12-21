@@ -1,18 +1,12 @@
-FROM geerlingguy/docker-ubuntu1404-ansible:latest
-LABEL maintainer "Mariem sbouii mariemsbouiii40@gmail.com"
-#retrieve a prebuilt role from ansible-galaxy
-#This could be an easy way to evaluate a role or to quickly
-# get a service up and running in your infrastructure.
+FROM 
 
-RUN mkdir /ansible-roles
+RUN 
 
-WORKDIR /ansible-roles
+WORKDIR 
 
-ADD playbook.yml /ansible-roles
+ADD playbook.yml
 
-RUN sudo ansible-galaxy install \
-              geerlingguy.java \
-              geerlingguy.jenkins \
+RUN sudo  \
     && ansible-playbook playbook.yml -c local
     && rm -rf /var/lib/apt/lists/*
 
