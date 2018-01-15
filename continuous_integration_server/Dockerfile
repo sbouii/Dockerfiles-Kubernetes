@@ -1,14 +1,11 @@
-FROM 
+FROM ansible/centos7-ansible:stable
 
-RUN 
+LABEL maintainer "Mariem sbouii mariem.sbouiii40@gmail.com"
 
-WORKDIR 
+ADD ./playbook.yml /playbook.yml
 
-ADD playbook.yml
-
-RUN sudo  \
-    && ansible-playbook playbook.yml -c local
-    && rm -rf /var/lib/apt/lists/*
+RUN ansible-playbook /playbook.yml -c local && \
+    yum clean all && \
 
 EXPOSE 8080
 # a default command just to list the installed plugins of the jenkins server, you must add the jenkins credentials --username and --password
