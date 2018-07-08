@@ -1,0 +1,13 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: microservice4-job
+spec:
+  template:
+    metadata:
+      name: microservice4-job
+    spec:
+      containers:
+      - name: microservice4-job
+        image: gcr.io/robust-root-125814/microservice4-job
+      restartPolicy: Never

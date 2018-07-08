@@ -1,13 +1,13 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: microservice2-job
+  name: microservice3-job
 spec:
   template:
     metadata:
-      name: microservice2-job
+      name: microservice3-job
     spec:
       containers:
-      - name: microservice2-job
-        image: gcr.io/robust-root-125814/microservice2-job
+      - name: microservice3-job
+        image: gcr.io/robust-root-125814/microservice3-job
       restartPolicy: Never
